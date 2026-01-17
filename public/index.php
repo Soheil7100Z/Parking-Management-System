@@ -28,6 +28,25 @@ switch($action) {
         $_SESSION['parkplatz']->add($f);
         print_r($_SESSION['parkplatz']->getFahrzeuge());
         break;
+
+    case 'remove':
+        $kennzeichen = isset($_POST['kennzeichen']) ? trim($_POST['kennzeichen']): null;
+        $fahrzeug = $_SESSION['parkplatz']->remove($kennzeichen);
+        if($fahrzeug != null) {
+            $fahrzeug->setParkenEnde(time());
+            $fahrzeugType = $fahrzeug->getType();
+            $dauer = $fahrzeug->getParkdauer();
+
+            if ($dauer < 60) {
+              $dauerText = $dauer . ' Sekunden';
+            } else {
+              $dauerText = round($dauer / 60) . ' Minuten';
+            }
+            $msg = '<p>'. $fahrzeugType .' mit dem kennzeichen <b>'. $fahrzeug->getKennzeichen() . '</b> wurde ausgeparkt.<br>
+            Parkdauer: <strong>' . $dauerText . '</strong></p>';
+            echo $msg;
+        }
+        break;
 }
 
 include_once __DIR__ . '/../templates/template.php';
