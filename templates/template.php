@@ -57,32 +57,35 @@
 
           <button class="btn btn-danger">Ausparken</button>
       </form>
-      
-      <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
-        isset($_GET['a']) &&
-        $_GET['a'] === 'remove') {
-          echo '<p>Removing is working</p>';
-        }
-      ?>
 
+      <?php if(isset($msg)) { ?>
+        <hr>
+        <div class="alert alert-info">
+            <?= $msg ?>
+        </div>
+      <?php } ?>
 
-      <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
-        isset($_GET['a']) &&
-        $_GET['a'] === 'add') {
-        echo'
-        <table border="1">
-          <tbody>
-              <tr>
-                  <td>Test 1</td>
-                  <td>Test 2</td>
-                  <td>Test 3</td>
+      <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+              <tr class="text-center">
+                  <th>Kennzeichen</th>
+                  <th>Eingeparkt</th>
+                  <th>Typ</th>
+                  <th>Parkplatznummer</th>
               </tr>
+          </thead>
+          <tbody>
+              <?php foreach($_SESSION['parkplatz']->getFahrzeuge() as $fahzeug) { ?>
+                  <tr class="text-center">
+                      <td><?= $fahzeug->getKennzeichen() ?></td>
+                      <td><?= date('d.m.y H:i:s', $fahzeug->getParkenStart()) ?></td>
+                      <td><?= $fahzeug->getType() ?></td>
+                      <td><?= $fahzeug->getParkNummer() ?></td>
+                  </tr>
+              <?php } ?>
           </tbody>
-        </table>';
-        }
-      ?>
+      </table>
+
     </div>
 </body>
 </html>

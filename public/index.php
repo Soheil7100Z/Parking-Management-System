@@ -26,7 +26,6 @@ switch($action) {
         };
 
         $_SESSION['parkplatz']->add($f);
-        print_r($_SESSION['parkplatz']->getFahrzeuge());
         break;
 
     case 'remove':
@@ -44,7 +43,6 @@ switch($action) {
             }
             $msg = '<p>'. $fahrzeugType .' mit dem kennzeichen <b>'. $fahrzeug->getKennzeichen() . '</b> wurde ausgeparkt.<br>
             Parkdauer: <strong>' . $dauerText . '</strong></p>';
-            echo $msg;
         }
         break;
 }
