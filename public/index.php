@@ -43,6 +43,8 @@ switch($action) {
             }
             $msg = '<p>'. $fahrzeugType .' mit dem kennzeichen <b>'. $fahrzeug->getKennzeichen() . '</b> wurde ausgeparkt.<br>
             Parkdauer: <strong>' . $dauerText . '</strong></p>';
+        } else {
+          $msg = '<p class="text-danger fw-bold">Das Kennzeichen ist nicht vorhanden!</p>';
         }
         break;
 }

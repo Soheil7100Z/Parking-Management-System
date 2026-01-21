@@ -11,7 +11,7 @@ class Fahrzeug {
 
     public function __construct(string $kennzeichen, string $type, ?int $parkenStart = null, $parkNummer = null)
     {
-        $this->kennzeichen = strtoupper($kennzeichen);
+        $this->kennzeichen = $kennzeichen;
         $this->parkenStart = $parkenStart ?? time();
         $this->type = $type;
         $this->parkNummer = $parkNummer ?? 123;

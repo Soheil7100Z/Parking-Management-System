@@ -29,14 +29,14 @@
               </div>
 
               <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="typ" id="typ_transporter" value="transporter">
+                  <label class="form-check-label" for="typ_transporter">Transporter</label>
+              </div>
+              <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="typ" id="typ_motorrad" value="motorrad">
                   <label class="form-check-label" for="typ_motorrad">Motorrad</label>
               </div>
 
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="typ" id="typ_transporter" value="transporter">
-                  <label class="form-check-label" for="typ_transporter">Transporter</label>
-              </div>
           </div>
 
           <button class="btn btn-primary">Einparken</button>
